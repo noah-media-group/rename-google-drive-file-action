@@ -52,13 +52,12 @@ jobs:
       - name: Checkout
         id: checkout
         uses: actions/checkout@v4
-
+      - name: Set current date as env variable
+        run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
       - name: Test Local Action
         id: test-action
         uses: ./
         with:
-          milliseconds: 2000
-
-      - name: Print Output
-        id: output
-        run: echo "${{ steps.test-action.outputs.time }}"
+          fileId: "1RB_ukhlDQ4053qGEEs8aWp2rPQaKLDiimBKkzb9djcQ"
+          fileName: TEST_GH_ACTION ${{ env.NOW }}
+          credentials: ${{ secrets.GCP_CREDENTIALS }}

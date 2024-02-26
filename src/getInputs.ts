@@ -1,10 +1,14 @@
 import * as core from "@actions/core";
 
+export type Credentials = {
+  client_email: string;
+  private_key: string;
+};
+
 export type Inputs = {
   fileId: string;
   fileName: string;
-  clientEmail: string;
-  privateKey: string;
+  credentials: Credentials;
 };
 
 export const getInputs = (): Inputs => {
@@ -13,22 +17,19 @@ export const getInputs = (): Inputs => {
     required: true,
   });
 
-  const clientEmail: string = core.getInput("clientEmail", {
+  const fileName = core.getInput("fileName", {
     required: true,
   });
 
-  const privateKey: string = core.getInput("privateKey", {
-    required: true,
-  });
-
-  const fileName: string = core.getInput("fileName", {
-    required: true,
-  });
+  const credentials = JSON.parse(
+    core.getInput("credentials", {
+      required: true,
+    }),
+  ) as Credentials;
 
   return {
     fileId,
     fileName,
-    clientEmail,
-    privateKey,
+    credentials,
   };
 };

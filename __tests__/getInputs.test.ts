@@ -18,10 +18,8 @@ describe("getInputs", () => {
           return "file_12345_id";
         case "fileName":
           return "new file name";
-        case "clientEmail":
-          return "client@example.com";
-        case "privateKey":
-          return "private_12345_key";
+        case "credentials":
+          return `{ "private_key": "private_12345_key", "client_email": "client@example.com" }`;
 
         default:
           return "";
@@ -35,8 +33,10 @@ describe("getInputs", () => {
     const expectedInputs: Inputs = {
       fileId: "file_12345_id",
       fileName: "new file name",
-      clientEmail: "client@example.com",
-      privateKey: "private_12345_key",
+      credentials: {
+        client_email: "client@example.com",
+        private_key: "private_12345_key",
+      },
     };
 
     expect(inputs).toMatchObject(expectedInputs);

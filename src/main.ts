@@ -8,9 +8,9 @@ import { renameFile } from "./renameFile";
  */
 export const run = async (): Promise<void> => {
   try {
-    const { fileId, fileName, ...auth } = getInputs();
+    const { fileId, fileName, credentials } = getInputs();
 
-    await renameFile(fileId, fileName, auth);
+    await renameFile(fileId, fileName, credentials);
   } catch (error) {
     // Fail the workflow run if an error occurs
     if (error instanceof Error) {

@@ -1,17 +1,20 @@
 import { google } from "googleapis";
-
-export type Auth = {
-  clientEmail: string;
-  privateKey: string;
-};
+import { Credentials } from "./getInputs";
 
 export const renameFile = async (
   fileId: string,
   fileName: string,
-  { clientEmail, privateKey }: Auth,
+  { client_email, private_key }: Credentials,
 ): Promise<void> => {
   const scopes = ["https://www.googleapis.com/auth/drive"];
-  const auth = new google.auth.JWT(clientEmail, undefined, privateKey, scopes);
+
+  const auth = new google.auth.JWT(
+    client_email,
+    undefined,
+    private_key,
+    scopes,
+  );
+
   const drive = google.drive({ version: "v3", auth });
 
   const response = await drive.files.update({
