@@ -9,11 +9,8 @@ inputs:
   fileName:
     description: "The new name of the file"
     required: true
-  clientEmail:
-    description: "client_email from your credentials.json file"
-    required: true
-  privateKey:
-    description: "private_key from your credentials.json file"
+  credentials:
+    description: "credentials.json file"
     required: true
 
 runs:
