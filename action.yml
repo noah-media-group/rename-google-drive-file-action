@@ -1,6 +1,9 @@
 name: "Rename Google Drive File"
 description: "This actions renames file in Google Drive"
 author: "Slate IQ"
+branding:
+  icon: 'file'
+  color: 'green'
 
 inputs:
   fileId:
