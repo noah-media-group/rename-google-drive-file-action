@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Checkout
         id: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
         id: setup-node
@@ -51,7 +51,7 @@ jobs:
     steps:
       - name: Checkout
         id: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Set current date as env variable
         run: echo NOW=$(date +'%Y-%m-%dT%H:%M:%S') >> $GITHUB_ENV
       - name: Test Local Action
